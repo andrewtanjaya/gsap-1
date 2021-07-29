@@ -11,13 +11,21 @@ body {
 
 #progress {
   height: 1px;
-  background-color: grey;
-  position: absolute;
-  top: 45%;
-  opacity: 1;
-  z-index: 2;
+  background-color: black;
   -webkit-transition: width 0.1s ease;
   transition: width 0.1s ease;
+}
+
+#progress-cont {
+  opacity: 1;
+  width: 40%;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  color: white;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .fadeOut {
@@ -29,6 +37,7 @@ body {
 canvas {
   opacity: 0;
   position: fixed;
+  top: 0%;
   -webkit-transform: scale(0);
           transform: scale(0);
   max-height: 100vw;
@@ -38,6 +47,10 @@ canvas {
 .fadeIn {
   -webkit-transform: scale(1) !important;
           transform: scale(1) !important;
+  top: 50% !important;
+  left: 50% !important;
+  -webkit-transform: translate(-50%, -50%) !important;
+          transform: translate(-50%, -50%) !important;
   opacity: 1 !important;
   -webkit-transition: all 1s 1.5s;
   transition: all 1s 1.5s;

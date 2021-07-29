@@ -7,11 +7,14 @@ const currentFrame = index => (
 )
 
 let progress = document.getElementById('progress')
+let progressCont = document.getElementById('progress-cont')
+let progressCount = document.getElementById('progress-count')
 var queue = new createjs.LoadQueue(false)
 queue.on("progress" , event => {
     let progress = Math.floor(event.progress * 100)
+    this.progress.style.backgroundColor = "white"
     this.progress.style.width = progress + '%'
-    console.log(event)
+    progressCount.innerHTML= progress + '%'
     if(progress == 100){
         console.log('all done')
         document.body.style.backgroundColor = "white"
@@ -20,7 +23,7 @@ queue.on("progress" , event => {
 queue.on("complete" , event => {
     canvas.classList.add('fadeIn')
     setTimeout(() => {
-        progress.classList.add('fadeOut')
+        progressCont.classList.add('fadeOut')
     }, 500);
 })
 
