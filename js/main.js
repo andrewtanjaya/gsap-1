@@ -17,7 +17,6 @@ queue.on("progress" , event => {
     progressCount.innerHTML= progress + '%'
     if(progress == 100){
         console.log('all done')
-        document.body.style.backgroundColor = "white"
     }
 })
 queue.on("complete" , event => {
@@ -31,12 +30,13 @@ queue.on("complete" , event => {
 
 const frameCount = 216
 
-canvas.height = 1080
-canvas.width = 1920
+canvas.height = 2812,50
+canvas.width = 5000
 const img = new Image()
 img.src = currentFrame(1);
 img.onload = function(){
-    context.drawImage(img, 0,0)
+    context.drawImage(img, 0, 0, img.width,    img.height,
+        0, 0, canvas.width, canvas.height)
 }
 
 const preloadImages = () =>{
@@ -51,7 +51,8 @@ preloadImages()
 
 const updateImage = index =>{
     img.src = currentFrame(index)
-    context.drawImage(img, 0,0)
+    context.drawImage(img, 0, 0, img.width,    img.height, 
+        0, 0, canvas.width, canvas.height)
 }
 
 window.addEventListener('scroll', () =>{

@@ -22,6 +22,7 @@ body{
     top : 50%;
     left: 50%;
     color: white;
+    font-family: 'Monument Extended', sans-serif;
     transform: translate(-50%, -50%) ;
 }
 
@@ -35,8 +36,8 @@ canvas{
     position: fixed;
     top: 0%;
     transform: scale(0);
-    max-height: 100vw;
-    max-width: 100vh;
+    max-width: 90vw;
+    max-height: 90vh;
 }
 
 .fadeIn{
