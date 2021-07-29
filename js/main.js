@@ -6,6 +6,7 @@ const currentFrame = index => (
     `https://d25gvo126vpks5.cloudfront.net/pop-seq/pop.${index.toString().padStart(3,'0')}.jpg`
 )
 
+let canvasCont = document.getElementById('canvas-cont')
 let progress = document.getElementById('progress')
 let progressCont = document.getElementById('progress-cont')
 let progressCount = document.getElementById('progress-count')
@@ -20,28 +21,52 @@ queue.on("progress" , event => {
     }
 })
 queue.on("complete" , event => {
-    canvas.classList.add('fadeIn')
+    canvasCont.classList.add('fadeIn')
     setTimeout(() => {
         progressCont.classList.add('fadeOut')
+        setTimeout(() => {
+            for(let j = 0 ;j<50 ; j++){
+                dosettimeout(j)
+            }
+            window.addEventListener('scroll', () =>{
+                const scrollTop = html.scrollTop
+                const maxScrollTop = html.scrollHeight - window.innerHeight
+                const scrollFraction =  scrollTop/maxScrollTop
+                const frameIndex = Math.min(frameCount - 1 , Math.floor(scrollFraction * frameCount))
+            
+                requestAnimationFrame(() => updateImage(frameIndex+1+50))
+            })
+        }, 500);
     }, 500);
+    
 })
+
+function dosettimeout(i){
+    setTimeout(() => {
+        console.log(i)
+        updateImage(i)
+    }, 50 * i);
+}
 
 
 
 const frameCount = 216
 
-canvas.height = 2812,50
-canvas.width = 5000
+canvas.height = 90 * window.innerHeight / 100
+canvas.width = canvas.height * (16/9)
 const img = new Image()
 img.src = currentFrame(1);
+img.style.objectFit = "cover"
 img.onload = function(){
-    context.drawImage(img, 0, 0, img.width,    img.height,
-        0, 0, canvas.width, canvas.height)
+    
+    scaleToFill(img)
+
 }
 
 const preloadImages = () =>{
     for(let i = 1 ; i < frameCount;i ++){
         const img = new Image()
+        img.style.objectFit = "cover"
         queue.loadFile(currentFrame(i))
         img.src = currentFrame(i)
     }
@@ -51,15 +76,16 @@ preloadImages()
 
 const updateImage = index =>{
     img.src = currentFrame(index)
-    context.drawImage(img, 0, 0, img.width,    img.height, 
-        0, 0, canvas.width, canvas.height)
+    img.style.objectFit = "cover"
+    scaleToFill(img)
+
 }
 
-window.addEventListener('scroll', () =>{
-    const scrollTop = html.scrollTop
-    const maxScrollTop = html.scrollHeight - window.innerHeight
-    const scrollFraction =  scrollTop/maxScrollTop
-    const frameIndex = Math.min(frameCount - 1 , Math.floor(scrollFraction * frameCount))
-
-    requestAnimationFrame(() => updateImage(frameIndex+1))
-})
+function scaleToFill(img){
+    // get the scale
+    var scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+    // get the top left position of the image
+    var x = (canvas.width / 2) - (img.width / 2) * scale;
+    var y = (canvas.height / 2) - (img.height / 2) * scale;
+    context.drawImage(img, x, y, img.width * scale, img.height * scale);
+}

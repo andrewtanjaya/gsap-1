@@ -1,8 +1,12 @@
+
+@import url('http://fonts.cdnfonts.com/css/monument-extended');
+
 html{
     height: 100vh;
 }
 
 body{
+    overflow-x: hidden;
     height: 400vh;
     background-color: black;
     transition: background-color 2s ease;
@@ -32,19 +36,48 @@ body{
 }
 
 canvas{
-    opacity: 0;
+    border-radius: 10px;
     position: fixed;
-    top: 0%;
-    transform: scale(0);
-    max-width: 90vw;
-    max-height: 90vh;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90vw;
+    height: 80vh;
 }
 
 .fadeIn{
     transform: scale(1) !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    
     opacity: 1 !important;
-    transition: all 1s 1.5s;
+    transition: all 1s;
+}
+
+#canvas-cont{
+    transform: scale(0);
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    width: 99vw;
+    height: 100vh;
+}
+.big-canvas-title{
+    padding-top: 30px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    flex-wrap: nowrap;
+    font-size: 6rem;
+    z-index: 3;
+    color: white;
+    font-weight: 800;
+    font-family: 'Monument Extended', sans-serif;
+    line-height: 1;
+}
+
+.logo{
+    width: 15%;
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translate(-50%,0);
 }
