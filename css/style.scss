@@ -11,6 +11,7 @@ body{
     height: 400vh;
     background-color: black;
     transition: background-color 2s ease;
+    // perspective: 2000px;
 }
 
 #progress{
@@ -90,7 +91,7 @@ canvas{
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 80px;
+    bottom: 100px;
     left: 50%;
     transform: translate(-50%,0);
     background-color: white;
@@ -99,7 +100,8 @@ canvas{
     border-radius: 50px;
     padding : 0 10px;
     color: black;
-    z-index: 5;
+    z-index: 7;
+    perspective: 50px;
 }
 
 .qr-get img{
@@ -124,9 +126,9 @@ canvas{
     transform: translate(-50%,0);
 }
 
-.card-cont{
+#card-cont{
     position: absolute;
-    bottom: 170px;
+    bottom: 180px;
     background-color: #1000F5;
     display: flex;
     justify-content: center;
@@ -137,8 +139,14 @@ canvas{
     box-sizing: border-box;
     border-radius: 15px;
     padding : 10px;
-    z-index: 10;
-    display: none;
+    z-index: 6;
+    opacity: 0;
+    transition: all 0.5s;
+    // transform: translate(0,10%);
+    transform-style: preserve-3d;
+    transform-origin: y;
+    
+    
 }
 .qr-pad{
     display: flex;
@@ -149,14 +157,18 @@ canvas{
     width: 170px;
     height: 170px;
     background-color: white;
+    transform: translateZ(30px);
+    transform-style: preserve-3d;
     
 }
-.card-cont img{
+#card-cont img{
     width: 150px;
     width: 150px;
+    
 }
 
-.card-cont p:nth-child(1){
+
+#card-cont p:nth-child(1){
     font-family: 'Monument Extended', sans-serif;
     font-weight: 800;  
     color: white;
@@ -164,9 +176,12 @@ canvas{
     line-height: 1;
     margin : 0;
     margin-bottom: 30px;
+    transform: translateZ(30px);
+    transform-style: preserve-3d;
 }
 
-.card-cont p:nth-child(2){
+#card-cont p:nth-child(2){
+    transform-style: preserve-3d;
     font-weight: 400;  
     font-family: 'Inter', sans-serif;
     color: #a4d3ff;
@@ -174,21 +189,24 @@ canvas{
     text-align: left;
     line-height: 0;
     margin-bottom: 20px;
+    transform: translateZ(30px);
 }
 
 .overlay{
-    height: 100vh;
+    height: 99vh;
     width: 100vw;
     position: fixed;
-    display: none;
     background-color: black;
-    opacity: 0.8;
+    opacity: 0;
+    transition: all 1s;
 }
 
 .qr-get:hover ~ .overlay{
-    display: block;
+    opacity: 0.8;
 }
 
-.qr-get:hover ~ .card-cont{
-    display: block;
+.qr-get:hover ~ #card-cont{
+    // transform: rotateY(0deg);
+    // transform: translate(0,-5%);
+    opacity: 1;
 }
