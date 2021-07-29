@@ -1,0 +1,19 @@
+html {
+  height: 100vh;
+}
+
+body {
+  height: 400vh;
+  background-color: black;
+}
+
+canvas {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  max-height: 100vw;
+  max-width: 100vh;
+}
+/*# sourceMappingURL=style.css.map */
