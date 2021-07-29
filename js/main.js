@@ -8,17 +8,25 @@ const currentFrame = index => (
 
 let progress = document.getElementById('progress')
 var queue = new createjs.LoadQueue(false)
-queue.on("fileload" , handleFileComplete);
 queue.on("progress" , event => {
+    let progress = Math.floor(event.progress * 100)
+    this.progress.style.width = progress + '%'
     console.log(event)
+    if(progress == 100){
+        console.log('all done')
+        document.body.style.backgroundColor = "white"
+    }
+})
+queue.on("complete" , event => {
+    canvas.classList.add('fadeIn')
+    setTimeout(() => {
+        progress.classList.add('fadeOut')
+    }, 500);
 })
 
-function handleFileComplete(event){
-
-}
 
 
-const frameCount = 218
+const frameCount = 216
 
 canvas.height = 1080
 canvas.width = 1920
