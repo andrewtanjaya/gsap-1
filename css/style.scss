@@ -142,12 +142,9 @@ canvas{
     padding : 10px;
     z-index: 6;
     opacity: 0;
-    transition: all 0.5s;
-    // transform: translate(0,10%);
+    transform: translate(0,10%);
     transform-style: preserve-3d;
-    transform-origin: y;
-    
-    
+    transform-origin: y;    
 }
 .qr-pad{
     display: flex;
@@ -207,7 +204,5 @@ canvas{
 }
 
 .qr-get:hover ~ #card-cont{
-    // transform: rotateY(0deg);
-    // transform: translate(0,-5%);
     opacity: 1;
 }

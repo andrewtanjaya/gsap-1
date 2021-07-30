@@ -174,8 +174,8 @@ canvas {
   padding: 10px;
   z-index: 6;
   opacity: 0;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transform: translate(0, 10%);
+          transform: translate(0, 10%);
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   -webkit-transform-origin: y;
