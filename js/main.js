@@ -52,14 +52,14 @@ function dosettimeout(i){
 
 const frameCount = 216
 
-canvas.height = 90 * window.innerHeight / 100
+canvas.height = 132 * window.innerHeight / 100
 canvas.width = canvas.height * (16/9)
 const img = new Image()
 img.src = currentFrame(1);
 img.style.objectFit = "cover"
 img.onload = function(){
     
-    scaleToFill(img)
+    context.drawImage(img, 0, 0, img.width , img.height);
 
 }
 
@@ -77,7 +77,7 @@ preloadImages()
 const updateImage = index =>{
     img.src = currentFrame(index)
     img.style.objectFit = "cover"
-    scaleToFill(img)
+    context.drawImage(img, 0, 0, img.width , img.height);
 
 }
 

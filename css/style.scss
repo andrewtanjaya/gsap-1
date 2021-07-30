@@ -43,8 +43,9 @@ canvas{
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
-    width: 90vw;
+    width: 85vw;
     height: 80vh;
+    overflow : hidden;
 }
 
 .fadeIn{
