@@ -48,8 +48,6 @@ function dosettimeout(i){
     }, 50 * i);
 }
 
-
-
 const frameCount = 216
 
 canvas.height = 132 * window.innerHeight / 100
@@ -58,9 +56,7 @@ const img = new Image()
 img.src = currentFrame(1);
 img.style.objectFit = "cover"
 img.onload = function(){
-    
     context.drawImage(img, 0, 0, img.width , img.height);
-
 }
 
 const preloadImages = () =>{
@@ -79,13 +75,4 @@ const updateImage = index =>{
     img.style.objectFit = "cover"
     context.drawImage(img, 0, 0, img.width , img.height);
 
-}
-
-function scaleToFill(img){
-    // get the scale
-    var scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-    // get the top left position of the image
-    var x = (canvas.width / 2) - (img.width / 2) * scale;
-    var y = (canvas.height / 2) - (img.height / 2) * scale;
-    context.drawImage(img, x, y, img.width * scale, img.height * scale);
 }
